@@ -1,0 +1,54 @@
+<!DOCTYPE>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.css">
+  <link rel="stylesheet" href="app.css">
+</head>
+<canvas id="canvas" width="400" height="400"></canvas>
+
+<body>
+  <section id = "index">
+    <div class = "container">
+
+      <button class="ui red button instructions">Instructions</button>
+      <button class="ui blue button go">Get Directions</button>
+      <div class="ui basic modal">
+        <i class="close icon"></i>
+        <div class="description">
+          <h2>Welcome to the SHS GPS</h2>
+          <p>To use, simply enter the location in which you are starting in the left circle. Next, enter the room in which you would like to go to in the right. Click go and GPS instuctions will be provided. For the locations that do not have a room number (ex. "Lobby"), please refer to the key below. Don't include the quotations.
+            <br>
+            <br>
+            <br>
+            Key:<br>
+            Lobby: "1"<br>
+            Fieldhouse/Big Gym: "2"<br>
+            Swimming Pool : "3"<br>
+            Nurse's Office : "4"<br>
+            Cafeteria : "5"<br>
+            Library : "6"<br>
+            Guidance : "7"<br>
+            Auditorium : "8"<br>
+            Boy's Locker Room : "9"<br>
+            Girl's Locker Room: "10"<br>
+            Trainer's Office : "11"<br>
+            Smaller Gymnasium : "12"<br>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id = "directions">
+    <div class = 'text-container'>
+  </div>
+  </section>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>
