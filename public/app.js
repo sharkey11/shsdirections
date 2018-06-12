@@ -7,102 +7,108 @@ $(".instructions").click(function(){
 var stair;
 var post;
 
-//get directions button
-$(".go").click(function(){
+function getDirections(room1,room2) {
+  console.log(room1)
+  // room1 = toString(room1)
+  // room2 = toString(room2)
   //fix syntax error in this block
-  if (parseInt(myinput.value.substring(1)) > 70 || parseInt(myinput2.value.substring(1)) >70 || (parseInt(myinput2.value) > 12 && parseInt(myinput2.value) < 1000) || parseInt(myinput.value) > 3070 || parseInt(myinput2.value) > 3070) {
+  if (parseInt(room1.substring(1)) > 70 || parseInt(room2.substring(1)) >70 || (parseInt(room2) > 12 && parseInt(room2) < 1000) || parseInt(room1) > 3070 || parseInt(room2) > 3070) {
     alert("Not a real room!")
-  }  else if (parseInt(myinput.value) <= 12) {
+  }  else if (parseInt(room1) <= 12) {
     alert("Not possible...yet. Ask someone!")
   } else {
     setInterval(function(){ pb.incrementProgress(); }, 30);
   }
-  if (parseInt(myinput2.value) <= 12) {
-    stair = new Stairway();
+  console.log(room1)
+  if (parseInt(room2) <= 12) {
+    stair = new Stairway(room1, room2);
     stair.checkFloor();
     stair.chooseStairway();
-    post = new PostStairway();
+    post = new PostStairway(room1, room2);
     post.specialCase();
     if (stair.floorDifference > 0) {
+      console.log("here")
       add("Take a " + stair.orientation + " and go to '" + stair.correctStaircase + "'.  Go to floor 1.");
     }
     add("Take a " + post.directionOrientation + " and walk until you reach the lobby.");
 
-    if (parseInt(myinput2.value) === 1) {
+    if (parseInt(room2) === 1) {
       add("You have arrived at your destination.");
     }
-    if (parseInt(myinput2.value) === 2) {
+    if (parseInt(room2) === 2) {
       add("Go straight, past the auditorium until you reach intersection of the ramp and the entrance to the library.");
       add("Take a left up the ramp followed by a right into the cafeteria. Go straight though the cafeteria.");
       add("Take a left and go straight. The fieldhouse will be on your right.");
     }
-    if (parseInt(myinput2.value) === 3) {
+    if (parseInt(room2) === 3) {
       add("Go straight, past the auditorium until you reach intersection of the ramp and the entrance to the library.");
       add("Take a left up the ramp followed by a right into the cafeteria. Go straight though the cafeteria.");
       add("Take a left and go sraight. Keep going straight through the health hallway(past the fieldhouse). The swimming will be on your right.");
     }
-    if (parseInt(myinput2.value) === 4) {
+    if (parseInt(room2) === 4) {
       add("Take a right(towards the secretary's desk). Go straight. The nurse's office will be on your left.");
     }
-    if (parseInt(myinput2.value) === 5) {
+    if (parseInt(room2) === 5) {
       add("Go straight, past the auditorium until you reach intersection of the ramp and the entrance to the library.");
       add("Take a left up the ramp followed by a right into the cafeteria.");
     }
-    if (parseInt(myinput2.value) === 6) {
+    if (parseInt(room2) === 6) {
       add("Go straight, past the auditorium. The library will be at the end of the hallway on the right.")
     }
-    if (parseInt(myinput2.value) === 7) {
+    if (parseInt(room2) === 7) {
       add("Go straight, past the auditorium until you reach intersection of the ramp and the entrance to the library.");
       add("Take a right into the long hallway before the library.")
       add("Walk straight. Guidance will be roughly halfway down the hallway on the right.")
     }
-    if (parseInt(myinput2.value) === 8) {
+    if (parseInt(room2) === 8) {
       add("Go straight. The auditorium will be on your left and up the stairs.");
     }
-    if (parseInt(myinput2.value) === 9) {
+    if (parseInt(room2) === 9) {
       add("Go straight, past the auditorium until you reach intersection of the ramp and the entrance to the library.");
       add("Take a left up the ramp followed by a right into the cafeteria. Go straight though the cafeteria.");
       add("Once out of the cafeteria, go through the double doors straight ahead and down the stairs.")
       add("Go through the door and up the stairs, and walk down the hallway.")
       add("Once out of the hallway, take a right and a left. The boys locker room will be on the right.")
     }
-    if (parseInt(myinput2.value) === 10) {
+    if (parseInt(room2) === 10) {
       add("Go straight, past the auditorium until you reach intersection of the ramp and the entrance to the library.");
       add("Take a left up the ramp followed by a right into the cafeteria. Go straight though the cafeteria.");
       add("Once out of the cafeteria, go through the double doors straight ahead and down the stairs.");
       add("Go through the door and up the stairs.");
       add("The girls locker room will be on the left.");
     }
-    if (parseInt(myinput2.value) === 11) {
+    if (parseInt(room2) === 11) {
       add("Go straight, past the auditorium until you reach intersection of the ramp and the entrance to the library.");
       add("Take a left up the ramp followed by a right into the cafeteria. Go straight though the cafeteria.");
       add("Once out of the cafeteria, go through the double doors straight ahead and down the stairs.");
       add("Go through the door and up the stairs.");
       add("The trainer's office is the first door on the left.");
     }
-    if (parseInt(myinput2.value) === 12) {
+    if (parseInt(room2) === 12) {
       add("Go straight, past the auditorium until you reach intersection of the ramp and the entrance to the library.");
       add("Take a left up the ramp followed by a right into the cafeteria. Go straight though the cafeteria.");
       add("Take a left and go straight. The smaller gym will be on your right, before the turn to the fieldhouse.");
     }
   }
   else {
-    stair = new Stairway();
+    stair = new Stairway(room1, room2);
     stair.checkFloor();
     stair.chooseStairway();
-    post = new PostStairway();
+    post = new PostStairway(room1, room2);
     post.nextDirection();
   }
-  if (stair.floorChange > 0 && parseInt(myinput.value) > 12 && parseInt(myinput2.value) > 12 && parseInt(myinput.value) < 3070 && parseInt(myinput2.value) < 3070) {
+  if (stair.floorChange > 0 && parseInt(room1) > 12 && parseInt(room2) > 12 && parseInt(room1) < 3070 && parseInt(room2) < 3070) {
     add("Take a " + stair.orientation + " and go to '" + stair.correctStaircase + "'.  Go to floor " + stair.secondFloor + ".");
     add("Once you're at floor " + stair.secondFloor + ", take a " + post.directionOrientation + " and walk until you reach room " + stair.second + ".");
     add("You have arrived at your destination.");
-  } else if (parseInt(myinput.value) > 12 && parseInt(myinput2.value) > 12 && stair.floorChange == 0) {
+  } else if (parseInt(room1) > 12 && parseInt(room2) > 12 && stair.floorChange == 0) {
     add("Take a " + post.directionOrientation + " and walk until you reach room " + stair.second + ".");
     add("You have arrived at your destination.");
   }
+  return json
+}
 
-});
+// });
 
 (function() {
   var canvas = document.getElementById('canvas'),
@@ -264,9 +270,9 @@ function BarCircle(xi, yi) {
   }
 }
 
-function Stairway() {
-  this.first = myinput.value;
-  this.second = myinput2.value;
+function Stairway(room1, room2) {
+  this.first = room1;
+  this.second = room2;
   this.secondFloor = this.second.charAt(0);
   this.floorDifference = this.first.charAt(0) - this.second.charAt(0);
   this.roomNumber = this.first.substring(2);
@@ -327,7 +333,7 @@ function Stairway() {
   }
 }
 
-function PostStairway() {
+function PostStairway(room1, room2) {
   this.startingRoom = parseInt(stair.first.substring(2));
   this.destination = parseInt(stair.second.substring(2));
   this.staircase = (stair.correctStaircase.substring(10))
@@ -360,7 +366,6 @@ function PostStairway() {
         } else {
           this.directionOrientation = 'right';
         }
-        console.log(this.directionOrientation)
       }
       if (this.staircase == 'P') {
         this.roomAtStaircase = 50
@@ -417,13 +422,17 @@ function PostStairway() {
 
 }
 
+var json = []
+
 function add(instruction) {
+  json.push(instruction)
   var newDirection = $("<div class= 'instruction'>" +
     "<div>" + instruction + "</div>" +
     "<div class='aligncenter'></div>"
     );
 
   $('#directions .text-container').append(newDirection);
+
 }
 
 
