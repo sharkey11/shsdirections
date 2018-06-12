@@ -23,6 +23,7 @@ console.log(req.body.room1)
   var room2 = req.body.room2
 
   res.send(getDirections(room1,room2))
+  json = []
 
 })
 
